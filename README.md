@@ -13,7 +13,7 @@ on top of it. In a REPL environment, the trade-off seems justified as there is r
 a need for very high speed screen drawing in an repetitive interactive 
 trial-inspecting-correcting process.
 
-`DtCalc.jl` can be viewed as a traditional console with `Jupyter`-like features.
+`DtCalc.jl` can be viewed as a traditional console with some `Jupyter`-like features.
 It does not offer more features than Jupyter offers (actually much less at present).
 On the other hand it feels familiar as a standard complying terminal REPL that is
 both easier to install and easier to get started with.
@@ -32,11 +32,11 @@ Launch Julia in DomTerm and run
 
 ```Julia
     use Pkg
-    Pkg.clone("https://github.com/jingyuewang/DomTerm.jl.git")
-    Pkg.clone("https://github.com/jingyuewang/MathMLRepr.jl.git")
-    Pkg.clone("https://github.com/jingyuewang/SVGDraw.jl.git")
-    Pkg.clone("https://github.com/jingyuewang/Mxma.jl.git")
-    Pkg.clone("https://github.com/jingyuewang/DtCalc.jl.git")
+    Pkg.add(url="https://github.com/jingyuewang/DomTerm.jl")
+    Pkg.add(url="https://github.com/jingyuewang/MathMLRepr.jl")
+    Pkg.add(url="https://github.com/jingyuewang/SVGDraw.jl")
+    Pkg.add(url="https://github.com/jingyuewang/Mxma.jl")
+    Pkg.add(url="https://github.com/jingyuewang/DtCalc.jl")
 ```
 This installs DtCalc.jl and all its components: DomTerm.jl, MathMLRepr.jl, SVGDraw.jl, and Mxma.jl.
 
@@ -65,7 +65,7 @@ grid-preview of all images in a directory
 <br/><br/>
 
 
-## Typesetting Vectors, and Matrices.
+## Typesetting Vectors and Matrices.
 `DtCalc` can display typesetted TeX/LaTeX code on DomTerm screen. Internally it
 translates TeX/LaTeX into MathML and send the generated MathML to
 a browser window <sup>[1](#myfootnote1)</sup>. In addition to TeX, it can optionally typeset
@@ -136,7 +136,7 @@ const expbitlen = Dict([
 __FloatType = Union{Float64, Float32, Float16}
 
 function showIEEE754(x::__FloatType)
-    # NOTE: the first char in the bit string is the hightest bit.
+    # NOTE: the first char in the bit string is the highest bit.
     bs = bitstring(x)
     bitlen=length(bs)
     exp_bitlen = expbitlen[typeof(x)]
